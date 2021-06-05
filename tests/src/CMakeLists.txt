@@ -13,9 +13,9 @@ macro (ph_add_test name)
 	target_include_directories (test_${name} PRIVATE ph::concepts include ph::file)
 	ph_precompile (TARGET test_${name} PRIVATE PCH ${std_pch})
 
-	# if (CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
+	if (CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
 		set_target_properties(test_${name}          PROPERTIES FOLDER "${PROJECT_NAME}")
-	# endif()		
+	endif()		
 endmacro ()
 
 

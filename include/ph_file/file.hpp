@@ -1,5 +1,7 @@
 #pragma once
-namespace ph::file{
+#include <ph_concepts/concepts.hpp>
+
+namespace ph::file {
 
 auto read (const char* path) -> char*
 {

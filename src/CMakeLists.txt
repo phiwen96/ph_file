@@ -9,7 +9,8 @@ add_library (${self} STATIC
 	${SOURCE_LIST}  ${HEADER_LIST} 
 )
 
-
+set_target_properties (${self} PROPERTIES CXX_STANDARD 20)
+target_compile_features (${self} PUBLIC cxx_std_20)
 
 
 

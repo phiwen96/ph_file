@@ -2,7 +2,7 @@ file(GLOB HEADER_LIST CONFIGURE_DEPENDS "${CMAKE_CURRENT_LIST_DIR}/../include/ph
 
 
 foreach(file ${HEADER_LIST})
-    source_group (TREE include\\ph_file
+    source_group (TREE ${CMAKE_CURRENT_LIST_DIR}/../include/ph_file
         PREFIX "include"               
         FILES  ${file}
     )

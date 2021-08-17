@@ -1,4 +1,6 @@
 file(GLOB HEADER_LIST CONFIGURE_DEPENDS "../include/${CMAKE_PROJECT_NAME}/*.hpp")
+message(${CMAKE_PROJECT_NAME})
+message(${PROJECT_NAME})
 
 foreach(file ${HEADER_LIST})
     source_group (TREE include/${CMAKE_PROJECT_NAME}
@@ -25,7 +27,7 @@ add_library (ph_file
 )
 
 set_target_properties (
-	${PROJECT_NAME} 
+	${CMAKE_PROJECT_NAME} 
 
 	PROPERTIES
   		CXX_STANDARD 20
@@ -36,13 +38,13 @@ set_target_properties (
 		""
 )
 # Make override a feature requirement only if available
-target_compile_features (${PROJECT_NAME} 
+target_compile_features (${CMAKE_PROJECT_NAME} 
 	PUBLIC
   		$<$<COMPILE_FEATURES:cxx_override>:cxx_override>
 )
 # Define the foo_OVERRIDE symbol so it provides the
 # override keyword if available or empty otherwise
-target_compile_definitions (${PROJECT_NAME} 
+target_compile_definitions (${CMAKE_PROJECT_NAME} 
 	# PUBLIC
   	# 	$<$<COMPILE_FEATURES:cxx_override>:-D${CMAKE_PROJECT_NAME}_OVERRIDE=override>
   	# 	$<$<NOT:$<COMPILE_FEATURES:cxx_override>>:-D${CMAKE_PROJECT_NAME}_OVERRIDE>
@@ -57,29 +59,29 @@ target_compile_definitions (${PROJECT_NAME}
 
 # target_sources (ph_concepts PRIVATE in/platform.hpp)
 
-set_target_properties (${PROJECT_NAME} PROPERTIES CXX_STANDARD 20)
-target_compile_features (${PROJECT_NAME} PUBLIC cxx_std_20)
+set_target_properties (${CMAKE_PROJECT_NAME} PROPERTIES CXX_STANDARD 20)
+target_compile_features (${CMAKE_PROJECT_NAME} PUBLIC cxx_std_20)
 
-ph_precompile (TARGET ${PROJECT_NAME} PRIVATE PCH ${std_pch})
+ph_precompile (TARGET ${CMAKE_PROJECT_NAME} PRIVATE PCH ${std_pch})
 
 # add_library (${CMAKE_PROJECT_NAME} ALIAS ${CMAKE_PROJECT_NAME}::${CMAKE_PROJECT_NAME})
 # target_link_libraries (lib PRIVATE    ${Vulkan_LIBRARIES} glfw)
 # target_link_libraries (lib PRIVATE ph_file)
 
-target_include_directories (${PROJECT_NAME} PUBLIC ${CMAKE_PROJECT_SOURCE_DIR}/include)
+target_include_directories (${CMAKE_PROJECT_NAME} PUBLIC ${CMAKE_PROJECT_SOURCE_DIR}/include)
 # target_include_directories (ph_concepts PRIVATE ${Boost_INCLUDE_DIRS})
 
-target_compile_features (${PROJECT_NAME} PUBLIC cxx_std_20)
+target_compile_features (${CMAKE_PROJECT_NAME} PUBLIC cxx_std_20)
 
 # target_compile_options(ph_concepts PUBLIC "-ast-dump  -fsyntax-only")
 
 
-target_include_directories(${PROJECT_NAME} PRIVATE
-    $<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/../include/${PROJECT_NAME}>
-    $<INSTALL_INTERFACE:include/${PROJECT_NAME}>
+target_include_directories(${CMAKE_PROJECT_NAME} PRIVATE
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/../include/${CMAKE_PROJECT_NAME}>
+    $<INSTALL_INTERFACE:include/${CMAKE_PROJECT_NAME}>
 )
 
-target_include_directories(${PROJECT_NAME} PUBLIC
+target_include_directories(${CMAKE_PROJECT_NAME} PUBLIC
     $<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/../include>
     $<INSTALL_INTERFACE:include>
 )
@@ -87,7 +89,7 @@ target_include_directories(${PROJECT_NAME} PUBLIC
 if (CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
     # set_target_properties (lib PROPERTIES FOLDER "lib/")
 else ()
-    set_target_properties (${PROJECT_NAME} PROPERTIES FOLDER "dependencies/${PROJECT_NAME}")
+    set_target_properties (${CMAKE_PROJECT_NAME} PROPERTIES FOLDER "dependencies/${CMAKE_PROJECT_NAME}")
 endif ()
 
 

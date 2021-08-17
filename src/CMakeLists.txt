@@ -2,7 +2,7 @@ file(GLOB HEADER_LIST CONFIGURE_DEPENDS "../include/ph_file/*.hpp")
 
 
 foreach(file ${HEADER_LIST})
-    source_group (TREE ../include/ph_file
+    source_group (TREE include/ph_file
         PREFIX "include"               
         FILES  ${file}
     )

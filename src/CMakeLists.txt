@@ -19,13 +19,13 @@ endforeach()
 
 
 
-add_library (lib
+add_library (${CMAKE_PROJECT_NAME}
 	${SOURCE_LIST}  ${HEADER_LIST} 
 	# ALIAS ${CMAKE_PROJECT_NAME}::${CMAKE_PROJECT_NAME}
 )
 
 set_target_properties (
-	lib 
+	${CMAKE_PROJECT_NAME} 
 
 	PROPERTIES
   		CXX_STANDARD 20
@@ -36,13 +36,13 @@ set_target_properties (
 		""
 )
 # Make override a feature requirement only if available
-target_compile_features (lib 
+target_compile_features (${CMAKE_PROJECT_NAME} 
 	PUBLIC
   		$<$<COMPILE_FEATURES:cxx_override>:cxx_override>
 )
 # Define the foo_OVERRIDE symbol so it provides the
 # override keyword if available or empty otherwise
-target_compile_definitions (lib 
+target_compile_definitions (${CMAKE_PROJECT_NAME} 
 	# PUBLIC
   	# 	$<$<COMPILE_FEATURES:cxx_override>:-D${CMAKE_PROJECT_NAME}_OVERRIDE=override>
   	# 	$<$<NOT:$<COMPILE_FEATURES:cxx_override>>:-D${CMAKE_PROJECT_NAME}_OVERRIDE>
@@ -56,31 +56,30 @@ target_compile_definitions (lib
 
 
 # target_sources (ph_concepts PRIVATE in/platform.hpp)
-set (self ${CMAKE_PROJECT_NAME})
 
-set_target_properties (lib PROPERTIES CXX_STANDARD 20)
-target_compile_features (lib PUBLIC cxx_std_20)
+set_target_properties (${CMAKE_PROJECT_NAME} PROPERTIES CXX_STANDARD 20)
+target_compile_features (${CMAKE_PROJECT_NAME} PUBLIC cxx_std_20)
 
-ph_precompile (TARGET lib PRIVATE PCH ${std_pch})
+ph_precompile (TARGET ${CMAKE_PROJECT_NAME} PRIVATE PCH ${std_pch})
 
 # add_library (${CMAKE_PROJECT_NAME} ALIAS ${CMAKE_PROJECT_NAME}::${CMAKE_PROJECT_NAME})
 # target_link_libraries (lib PRIVATE    ${Vulkan_LIBRARIES} glfw)
 # target_link_libraries (lib PRIVATE ph_file)
 
-target_include_directories (lib PUBLIC ${CMAKE_PROJECT_SOURCE_DIR}/include)
+target_include_directories (${CMAKE_PROJECT_NAME} PUBLIC ${CMAKE_PROJECT_SOURCE_DIR}/include)
 # target_include_directories (ph_concepts PRIVATE ${Boost_INCLUDE_DIRS})
 
-target_compile_features (lib PUBLIC cxx_std_20)
+target_compile_features (${CMAKE_PROJECT_NAME} PUBLIC cxx_std_20)
 
 # target_compile_options(ph_concepts PUBLIC "-ast-dump  -fsyntax-only")
 
 
-target_include_directories(lib PRIVATE
+target_include_directories(${CMAKE_PROJECT_NAME} PRIVATE
     $<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/../include/${CMAKE_PROJECT_NAME}>
     $<INSTALL_INTERFACE:include/${CMAKE_PROJECT_NAME}>
 )
 
-target_include_directories(lib PUBLIC
+target_include_directories(${CMAKE_PROJECT_NAME} PUBLIC
     $<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/../include>
     $<INSTALL_INTERFACE:include>
 )
@@ -88,7 +87,7 @@ target_include_directories(lib PUBLIC
 if (CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
     # set_target_properties (lib PROPERTIES FOLDER "lib/")
 else ()
-    set_target_properties (lib PROPERTIES FOLDER "dependencies/${CMAKE_PROJECT_NAME}")
+    set_target_properties (${CMAKE_PROJECT_NAME} PROPERTIES FOLDER "dependencies/${CMAKE_PROJECT_NAME}")
 endif ()
 
 

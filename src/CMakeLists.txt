@@ -19,7 +19,7 @@ endforeach()
 
 
 
-add_library (${CMAKE_PROJECT_NAME}
+add_library (ph_file
 	${SOURCE_LIST}  ${HEADER_LIST} 
 	# ALIAS ${CMAKE_PROJECT_NAME}::${CMAKE_PROJECT_NAME}
 )

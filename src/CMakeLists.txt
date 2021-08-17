@@ -1,4 +1,4 @@
-file(GLOB HEADER_LIST CONFIGURE_DEPENDS "../include/ph_file/*.hpp")
+file(GLOB HEADER_LIST CONFIGURE_DEPENDS "${CMAKE_CURRENT_LIST_DIR}/../include/ph_file/*.hpp")
 
 
 foreach(file ${HEADER_LIST})
@@ -9,7 +9,7 @@ foreach(file ${HEADER_LIST})
 endforeach()
 
 
-file(GLOB SOURCE_LIST CONFIGURE_DEPENDS "*.cpp")
+file(GLOB SOURCE_LIST CONFIGURE_DEPENDS "${CMAKE_CURRENT_LIST_DIR}/*.cpp")
 
 foreach(file ${SOURCE_LIST})
     source_group (TREE ${CMAKE_CURRENT_LIST_DIR}

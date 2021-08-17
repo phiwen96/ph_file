@@ -86,9 +86,9 @@ endif ()
 
 add_subdirectory (src)
 
-add_subdirectory (applications)
+# add_subdirectory (applications)
 
-add_subdirectory (docs)
+# add_subdirectory (docs)
 
 if (CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
 # include(CMakePrintHelpers)

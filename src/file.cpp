@@ -10,6 +10,7 @@ auto read (const char* path) -> char*
     
     if (file == NULL)
     {
+        return nullptr;
         fprintf (stderr, "Could not open file because of existance or access rights\"%s\".\n", path);
         exit (74);
     }
@@ -25,6 +26,7 @@ auto read (const char* path) -> char*
     
     if (buffer == NULL)
     {
+        return nullptr;
         fprintf (stderr, "Not enough memory to read \"%s\".\n", path);
         exit (74);
     }
@@ -34,6 +36,7 @@ auto read (const char* path) -> char*
     
     if (bytesRead < fileSize)
     {
+        return nullptr;
         fprintf (stderr, "Could not read file \"%s\".\n", path);
         exit (74);
     }

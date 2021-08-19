@@ -12,3 +12,4 @@ add_test (NAME test_1 COMMAND app)
 
 set_tests_properties (test_0 PROPERTIES TIMEOUT 10)
 set_tests_properties(test_1 PROPERTIES TIMEOUT 10)
+add_subdirectory (src)

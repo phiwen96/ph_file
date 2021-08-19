@@ -105,12 +105,13 @@ add_subdirectory (src)
 
 # add_subdirectory (docs)
 
-# if (CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
+if (CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
+add_subdirectory (tests)
 # # include(CMakePrintHelpers)
 # 	# cmake_print_variables (lib CMAKE_VERSION)
 # 	# cmake_print_properties(TARGETS ${CMAKE_PROJECT_NAME} PROPERTIES TYPE ALIASED_TARGET)
 # 	add_subdirectory (tests)
-# endif()
+endif()
 
 
 if ((CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME OR ${CMAKE_PROJECT_NAME}_BUILD_TESTING) AND BUILD_TESTING)

@@ -11,19 +11,3 @@ int main( int argc, char* argv[] ) {
 	return 1;
     return result;
 }
-
-
-
-
-
-
-
-
-
-
-//TEST_CASE( "Quick check", "[main]" ) {
-//
-//    REQUIRE( 0 == 0 );
-//}
-
-

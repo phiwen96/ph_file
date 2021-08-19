@@ -60,6 +60,21 @@ if (NOT TARGET ph_concepts)
 	endif ()
 endif ()
 
+if (NOT TARGET ph_optional)
+	include (FetchContent)
+	FetchContent_Declare(
+  		ph_optional
+  		GIT_REPOSITORY https://github.com/phiwen96/ph_optional.git
+  		GIT_TAG        v0.0.0)
+
+	FetchContent_GetProperties (ph_optional)
+	
+	if (NOT ph_optional_POPULATED)
+  		FetchContent_Populate (ph_optional)
+  		add_subdirectory (${ph_optional_SOURCE_DIR} ${ph_optional_BINARY_DIR})
+	endif ()
+endif ()
+
 
 
 

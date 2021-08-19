@@ -67,8 +67,8 @@ ph_precompile (TARGET ph_file PRIVATE PCH ${std_pch})
 # target_link_libraries (lib PRIVATE    ${Vulkan_LIBRARIES} glfw)
 # target_link_libraries (lib PRIVATE ph_file)
 
-target_include_directories (ph_file PUBLIC ${CMAKE_PROJECT_SOURCE_DIR}/include ph_concepts)
-target_link_libraries (ph_file PUBLIC ph_concepts)
+target_include_directories (ph_file PUBLIC ${CMAKE_PROJECT_SOURCE_DIR}/include ph_concepts ph_proxy ph_optional)
+target_link_libraries (ph_file PUBLIC ph_concepts ph_proxy ph_optional)
 
 # target_include_directories (ph_concepts PRIVATE ${Boost_INCLUDE_DIRS})
 

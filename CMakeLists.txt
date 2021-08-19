@@ -75,6 +75,21 @@ if (NOT TARGET ph_optional)
 	endif ()
 endif ()
 
+if (NOT TARGET ph_proxy)
+	include (FetchContent)
+	FetchContent_Declare(
+  		ph_proxy
+  		GIT_REPOSITORY https://github.com/phiwen96/ph_proxy.git
+  		GIT_TAG        v0.0.0)
+
+	FetchContent_GetProperties (ph_proxy)
+	
+	if (NOT ph_proxy_POPULATED)
+  		FetchContent_Populate (ph_proxy)
+  		add_subdirectory (${ph_proxy_SOURCE_DIR} ${ph_proxy_BINARY_DIR})
+	endif ()
+endif ()
+
 
 
 

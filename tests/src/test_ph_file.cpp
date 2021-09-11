@@ -7,7 +7,6 @@ using std::cout, std::endl;
 TEST_CASE ("main")
 {
     
-    cout << "hi" << endl;
 }
 
 
@@ -15,6 +14,8 @@ TEST_CASE ("read file")
 {
     SECTION ("char const*")
     {
+        char const* path {__FILE__};
+        ph::file::read (path);
         
     }
     
@@ -22,4 +23,10 @@ TEST_CASE ("read file")
     {
         
     }
+}
+
+
+TEST_CASE ()
+{
+    cout << "gi" << endl;
 }
